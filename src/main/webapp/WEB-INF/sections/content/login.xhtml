@@ -11,11 +11,11 @@
         <h:form > 
             Имя:
             <br/>
-            <p:inputText value="#{loggedUserBean.username}"/>
+            <p:inputText maxlength="265" size="12" value="#{loggedUserBean.username}"/>
             <br/> <br/>
             Пароль:
             <br/>
-            <p:password value="#{loggedUserBean.password}"/>
+            <p:password  maxlength="512" size="12" value="#{loggedUserBean.password}"/>
             <br/><br/> <br/>
             <p:commandLink value="Войти" action="#{loggedUserBean.doLogin}"/> или  <p:commandLink value="Зарегистрироваться"/>
         </h:form>

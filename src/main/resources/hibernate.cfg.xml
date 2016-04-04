@@ -5,7 +5,7 @@
     <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
     <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/optovik</property>
     <property name="hibernate.connection.username">postgres</property>
-    <property name="hibernate.connection.password">jgnjdstpfregrb</property>
-    <mapping class="security.Users" ></mapping>
+    <property name="hibernate.connection.password">postgres</property>
+    <mapping class="security.Users"/>
   </session-factory>
 </hibernate-configuration>
