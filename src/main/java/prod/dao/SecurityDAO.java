@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao;
+package prod.dao;
 
 import javax.transaction.Transactional;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import security.Users;
+import prod.model.Users;
 
 /**
  *

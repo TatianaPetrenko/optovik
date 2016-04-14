@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+    xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/security
+http://www.springframework.org/schema/security/spring-security.xsd">
+ 
+    <http auto-config="true">
+        <intercept-url pattern="/index.xhtml" access="ROLE_USER" />
+        <form-login login-page="/login.xhtml" default-target-url="/index.xhtml"
+            authentication-failure-url="/login.xhtml?status=error" />
+        <logout logout-success-url="/login.xhtml?status=logout" />
+    </http>
+ 
+     <authentication-manager>
+        <authentication-provider>
+            <jdbc-user-service data-source-ref="ds"
+                users-by-username-query='select username, password from users where username = ?'
+                authorities-by-username-query="select u.username, r.role_name from users u, roles r where u.id = r.user_role_id and u.username = ? " />
+        </authentication-provider>
+    </authentication-manager>
+ 
+    <beans:bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <beans:property name="driverClassName" value="org.postgresql.Driver" />
+        <beans:property name="url" value="jdbc:postgresql://localhost:5432/optovik" />
+        <beans:property name="username" value="postgres" />
+        <beans:property name="password" value="postgres" />
+    </beans:bean>
+ 
+</beans:beans>

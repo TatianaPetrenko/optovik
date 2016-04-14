@@ -3,17 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package security;
+package prod.model;
 
 import java.io.Serializable;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -22,38 +22,39 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Tatyana
+ * @author Tatiana
  */
 @Entity
-@ManagedBean
-@SessionScoped
-@Table(name = "users")
+@Table(name = "roles")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Users.findAll", query = "SELECT u FROM Users u"),
-    @NamedQuery(name = "Users.findById", query = "SELECT u FROM Users u WHERE u.id = :id"),
-    @NamedQuery(name = "Users.findByUsername", query = "SELECT u FROM Users u WHERE u.username = :username"),
-    @NamedQuery(name = "Users.findByPassword", query = "SELECT u FROM Users u WHERE u.password = :password")})
-public class Users implements Serializable {
-
+    @NamedQuery(name = "Roles.findAll", query = "SELECT r FROM Roles r"),
+    @NamedQuery(name = "Roles.findById", query = "SELECT r FROM Roles r WHERE r.id = :id"),
+    @NamedQuery(name = "Roles.findByRoleName", query = "SELECT r FROM Roles r WHERE r.roleName = :roleName")})
+public class Roles implements Serializable {
+    @Size(max = 128)
+    @Column(name = "role")
+    private String role;
+    @JoinColumn(name = "username", referencedColumnName = "username")
+    @ManyToOne(optional = false)
+    private Users username;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Size(max = 256)
-    @Column(name = "username")
-    private String username;
-    @Size(max = 512)
-    @Column(name = "password")
-    private String password;
+    @Size(max = 128)
+    @Column(name = "role_name")
+    private String roleName;
+    @JoinColumn(name = "user_role_id", referencedColumnName = "id")
+    @ManyToOne
+    private Users userRoleId;
 
-
-    public Users() {
+    public Roles() {
     }
 
-    public Users(Integer id) {
+    public Roles(Integer id) {
         this.id = id;
     }
 
@@ -65,20 +66,20 @@ public class Users implements Serializable {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getRoleName() {
+        return roleName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
     }
 
-    public String getPassword() {
-        return password;
+    public Users getUserRoleId() {
+        return userRoleId;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setUserRoleId(Users userRoleId) {
+        this.userRoleId = userRoleId;
     }
 
     @Override
@@ -91,10 +92,10 @@ public class Users implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Users)) {
+        if (!(object instanceof Roles)) {
             return false;
         }
-        Users other = (Users) object;
+        Roles other = (Roles) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -103,9 +104,23 @@ public class Users implements Serializable {
 
     @Override
     public String toString() {
-        return "security.Users[ id=" + id + " ]";
+        return "prod.model.Roles_1[ id=" + id + " ]";
     }
-    
-    
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public Users getUsername() {
+        return username;
+    }
+
+    public void setUsername(Users username) {
+        this.username = username;
+    }
     
 }
