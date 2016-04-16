@@ -33,6 +33,15 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Roles.findByRoleName", query = "SELECT r FROM Roles r WHERE r.roleName = :roleName")})
 public class Roles implements Serializable {
     @Size(max = 128)
+    @Column(name = "code")
+    private String code;
+    @Size(max = 128)
+    @Column(name = "label")
+    private String label;
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @ManyToOne
+    private Users userId;
+    @Size(max = 128)
     @Column(name = "role")
     private String role;
     @JoinColumn(name = "username", referencedColumnName = "username")
@@ -121,6 +130,30 @@ public class Roles implements Serializable {
 
     public void setUsername(Users username) {
         this.username = username;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
+    }
+
+    public Users getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Users userId) {
+        this.userId = userId;
     }
     
 }

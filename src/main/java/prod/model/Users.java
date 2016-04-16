@@ -35,6 +35,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Users.findByPassword", query = "SELECT u FROM Users u WHERE u.password = :password"),
     @NamedQuery(name = "Users.findByEnabled", query = "SELECT u FROM Users u WHERE u.enabled = :enabled")})
 public class Users implements Serializable {
+    @OneToMany(mappedBy = "userId")
+    private Collection<Wholesaler> wholesalerCollection;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -123,6 +125,15 @@ public class Users implements Serializable {
     @Override
     public String toString() {
         return "prod.model.Users_1[ id=" + id + " ]";
+    }
+
+    @XmlTransient
+    public Collection<Wholesaler> getWholesalerCollection() {
+        return wholesalerCollection;
+    }
+
+    public void setWholesalerCollection(Collection<Wholesaler> wholesalerCollection) {
+        this.wholesalerCollection = wholesalerCollection;
     }
     
 }

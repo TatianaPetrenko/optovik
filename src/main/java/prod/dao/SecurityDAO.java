@@ -5,31 +5,51 @@
  */
 package prod.dao;
 
+import java.util.HashSet;
+import java.util.Set;
+import javax.inject.Inject;
+import javax.inject.Named;
 import javax.transaction.Transactional;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import prod.model.Roles;
+import prod.model.UserModel;
 import prod.model.Users;
 
 /**
  *
  * @author Tatyana
  */
-
+@Named
 @Transactional
 public class SecurityDAO {
 
-    SessionFactory sessions = new Configuration().configure().buildSessionFactory();
+    @Inject
+    private SessionFactory sessionFactory;
 
-    public Users thyPass(String uname) {
-
-        Query query = sessions.getCurrentSession().createQuery("FROM Users where username= :uname");
-        if (query.list().get(0) != null) {
-            return (Users) query.list().get(0);
-
-        } else {
-            return null;
-        }
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
     }
 
+    public void addUser(UserModel model) {
+        Users user = new Users();
+        user.setUsername(model.getLogin());
+        user.setPassword(model.getPwd());
+        user.setEnabled(true);
+        Roles role = (Roles) sessionFactory.getCurrentSession()
+                .createQuery("from Role where code='ROLE_USER'").uniqueResult();
+        if (role == null) {
+            role = new Roles();
+            role.setCode("ROLE_USER");
+            role.setLabel("ROLE FOR SIMPLE ACCESS");
+            sessionFactory.getCurrentSession().save(role);
+        }
+        Set<Roles> roles = new HashSet<Roles>();
+        roles.add(role);
+        user.setRolesCollection(roles);
+        sessionFactory.getCurrentSession().save(user);
+    }
+    
+    
 }
