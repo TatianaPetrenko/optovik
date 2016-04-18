@@ -5,35 +5,32 @@
  */
 package prod.dao;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.transaction.Transactional;
-import org.hibernate.Query;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import prod.model.Roles;
 import prod.model.UserModel;
 import prod.model.Users;
 
 /**
  *
- * @author Tatyana
+ * @author Altarix
  */
 @Named
-@Transactional
-public class SecurityDAO {
+@Transactional("transactionManager")
+public class UserDAOImpl {
 
-    @Inject
     private SessionFactory sessionFactory;
 
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
-
     public void addUser(UserModel model) {
-        Users user = new Users();
+     Users user = new Users();
         user.setUsername(model.getLogin());
         user.setPassword(model.getPwd());
         user.setEnabled(true);
@@ -49,7 +46,14 @@ public class SecurityDAO {
         roles.add(role);
         user.setRolesCollection(roles);
         sessionFactory.getCurrentSession().save(user);
+        
     }
     
-    
+    public SessionFactory getSessionFactory() {
+        return sessionFactory;
+    }
+
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 }

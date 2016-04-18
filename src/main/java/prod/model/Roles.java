@@ -17,7 +17,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import static javax.swing.text.StyleConstants.Size;
 import javax.validation.constraints.Size;
+
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**

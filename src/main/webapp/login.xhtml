@@ -11,6 +11,7 @@
         <div id="logform">
            <h3>Войти на портал</h3>
     <form method="post" action="j_spring_security_check">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         Имя пользователя :<input name="j_username" type="text" /> <br />
         Пароль :<input name="j_password" type="password" /> <br />
         <input value="Войти" type="submit" />

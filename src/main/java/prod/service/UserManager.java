@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package prod.dao;
+package prod.service;
  
 import javax.inject.Inject;
 import javax.inject.Named;
+import prod.dao.UserDAOImpl;
 import prod.model.UserModel;
  
 
@@ -18,9 +19,9 @@ import prod.model.UserModel;
 public class UserManager {
     
   @Inject
-    public SecurityDAO userDAO;
+    public UserDAOImpl userDAO;
  
-    public void setUserDAO(SecurityDAO userDAO) {
+    public void setUserDAO(UserDAOImpl userDAO) {
         this.userDAO = userDAO;
     }
  
