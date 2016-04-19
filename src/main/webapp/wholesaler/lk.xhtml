@@ -15,17 +15,29 @@
                 <ui:include src="../WEB-INF/sections/headers/main_head.xhtml" />
             </ui:define>
 
+             
+             <ui:define name="left-content">
+                
+                    <ui:include src="../WEB-INF/sections/content/news.xhtml" />
+  
+            </ui:define>
 
             <ui:define name="content">
-                <ui:include src="../WEB-INF/sections/content/main.xhtml" />
+                <h:panelGroup id="included-content" layout="block" >
+                    <ui:include src="../WEB-INF/sections/#{pages.page}" />
+                 </h:panelGroup> 
             </ui:define>
             
+                <ui:define name="right-content">
+                    <ui:include src="../WEB-INF/sections/content/hello-wh.xhtml" />
+            </ui:define>
+             
               <ui:define name="footer">
                   <ui:include src="../WEB-INF/sections/footer.xhtml" />
             </ui:define>
             
-              <ui:define name="menu">
-                  <ui:include src="../WEB-INF/sections/menus/menu-emploee.xhtml" />
+              <ui:define name="menu" >
+                  <ui:include src="../WEB-INF/sections/menus/menu-wholesaler.xhtml" />
             </ui:define>
         </ui:composition>
     </h:body>

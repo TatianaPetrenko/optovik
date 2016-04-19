@@ -6,6 +6,8 @@
         <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/optovik</property>
         <property name="hibernate.connection.username">postgres</property>
         <property name="hibernate.connection.password">postgres</property>
-
+<mapping class="prod.model.Users"/>
+<mapping class="prod.model.Roles"/>
+<mapping class="prod.model.Wholesaler"/>
     </session-factory>
 </hibernate-configuration>

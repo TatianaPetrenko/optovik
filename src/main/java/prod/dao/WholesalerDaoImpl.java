@@ -31,16 +31,16 @@ public class WholesalerDaoImpl {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName();
         
-        String hql = "from Users where username="+name;
-     Query query = session.createQuery(hql);
-     //query.setParameter("groupId", groupId);
-     List<Users> u = query.list();
-//        Criteria criteria = session.createCriteria(Users.class);
-//        Users u = (Users) criteria.add(Restrictions.eq("username", name))
-//                .uniqueResult();
+//        String hql = "from Users where username="+name;
+//     Query query = session.createQuery(hql);
+//     //query.setParameter("groupId", groupId);
+//     List<Users> u = query.list();
+        Criteria criteria = session.createCriteria(Users.class);
+        List<Users> u = (List<Users>) criteria.add(Restrictions.eq("username", name)).list();
+               
 
         Criteria criteriaw = session.createCriteria(Wholesaler.class);
-        Wholesaler n = (Wholesaler) criteriaw.add(Restrictions.eq("user_id", u.get(0).getId()))
+        Wholesaler n = (Wholesaler) criteriaw.add(Restrictions.eq("userId.id", u.get(0).getId()))
                 .uniqueResult();
         return n;
     }

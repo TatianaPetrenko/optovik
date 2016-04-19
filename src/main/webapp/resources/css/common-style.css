@@ -44,6 +44,7 @@ body > #page {
     -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.1);
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.1);
     margin-top: -20px;
+    min-height: 800px;
 
 }
 #header {
@@ -94,9 +95,7 @@ body > #page {
     font-size: 16px!important;
 }
 
-#logform {
-
-    width: 160px;
+.block-form {
 
     padding: 38px 12px;
     background-color: white;
@@ -161,9 +160,8 @@ body > #page {
     -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
     -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
     box-shadow: -1px 1px 5px 0px rgba(0,0,0,0.2);
-    width: 160px;
     padding: 38px 12px;
-    height: 600px;
+
 }
 
 #block-menu {
@@ -192,3 +190,9 @@ body > #page {
     background-color: rgb(193, 11, 52);
 
 }
+
+#menu, #menu form {
+    
+    width: 100%;
+}
+

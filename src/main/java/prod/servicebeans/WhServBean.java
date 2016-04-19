@@ -5,6 +5,7 @@
  */
 package prod.servicebeans;
 
+import java.io.Serializable;
 import java.sql.SQLException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -18,24 +19,26 @@ import prod.model.Wholesaler;
  */
 @ManagedBean
 @SessionScoped
-public class WhServBean {
+public class WhServBean implements Serializable{
 
-    String name;
+    Wholesaler thisWholesaler;
 
-    public String getName() {
-        return name;
+    public Wholesaler getThisWholesaler() {
+        return thisWholesaler;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setThisWholesaler(Wholesaler thisWholesaler) {
+        this.thisWholesaler = thisWholesaler;
     }
+
+   
     
     public String getByUsername() throws  SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
     
         WholesalerDaoImpl whdao = new WholesalerDaoImpl();
-        String n = whdao.getName().getName();
- 
-        return n;
+        Wholesaler n = whdao.getName();
+        setThisWholesaler(n);
+        return n.getName();
     }
     
 }
