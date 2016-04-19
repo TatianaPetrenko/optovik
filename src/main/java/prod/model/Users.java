@@ -17,33 +17,33 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Tatiana
+ * @author Altarix
  */
 @Entity
 @Table(name = "users")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Users.findAll", query = "SELECT u FROM Users u"),
-    @NamedQuery(name = "Users.findById", query = "SELECT u FROM Users u WHERE u.id = :id"),
     @NamedQuery(name = "Users.findByUsername", query = "SELECT u FROM Users u WHERE u.username = :username"),
     @NamedQuery(name = "Users.findByPassword", query = "SELECT u FROM Users u WHERE u.password = :password"),
-    @NamedQuery(name = "Users.findByEnabled", query = "SELECT u FROM Users u WHERE u.enabled = :enabled")})
+    @NamedQuery(name = "Users.findByEnabled", query = "SELECT u FROM Users u WHERE u.enabled = :enabled"),
+    @NamedQuery(name = "Users.findById", query = "SELECT u FROM Users u WHERE u.id = :id")})
 public class Users implements Serializable {
+
     @OneToMany(mappedBy = "userId")
     private Collection<Wholesaler> wholesalerCollection;
+
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id")
-    private Integer id;
-    @Size(max = 256)
+    @NotNull
+    @Size(min = 1, max = 256)
     @Column(name = "username")
     private String username;
     @Size(max = 512)
@@ -51,7 +51,12 @@ public class Users implements Serializable {
     private String password;
     @Column(name = "enabled")
     private Boolean enabled;
-    @OneToMany(mappedBy = "userRoleId")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id")
+    private Integer id;
+    @OneToMany(mappedBy = "userId")
     private Collection<Roles> rolesCollection;
 
     public Users() {
@@ -61,12 +66,9 @@ public class Users implements Serializable {
         this.id = id;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
+    public Users(Integer id, String username) {
         this.id = id;
+        this.username = username;
     }
 
     public String getUsername() {
@@ -91,6 +93,14 @@ public class Users implements Serializable {
 
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     @XmlTransient
@@ -124,7 +134,7 @@ public class Users implements Serializable {
 
     @Override
     public String toString() {
-        return "prod.model.Users_1[ id=" + id + " ]";
+        return "prod.model.Users[ id=" + id + " ]";
     }
 
     @XmlTransient

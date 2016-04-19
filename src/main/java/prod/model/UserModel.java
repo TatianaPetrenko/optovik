@@ -5,15 +5,50 @@
  */
 package prod.model;
 
+import java.io.Serializable;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import prod.dao.WholesalerDaoImpl;
+
 /**
  *
  * @author Tatiana
  */
-public class UserModel {
+@ManagedBean
+@SessionScoped
+public class UserModel implements Serializable{
 
     private String login;
     private String pwd;
     private String pwdConfirm;
+  private String name;
+  private String email;
+     private String site;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getSite() {
+        return site;
+    }
+
+    public void setSite(String site) {
+        this.site = site;
+    }
+
 
     public void reset() {
         this.login = null;
@@ -44,4 +79,12 @@ public class UserModel {
     public void setPwdConfirm(String pwdConfirm) {
         this.pwdConfirm = pwdConfirm;
     }
+    
+    
+    public void regWholesaler() {
+
+          WholesalerDaoImpl whdao = new WholesalerDaoImpl();
+         whdao.newWH(this);
+
+}
 }

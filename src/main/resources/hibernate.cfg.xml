@@ -9,5 +9,6 @@
 <mapping class="prod.model.Users"/>
 <mapping class="prod.model.Roles"/>
 <mapping class="prod.model.Wholesaler"/>
+<mapping class="prod.model.Vacancy"/>
     </session-factory>
 </hibernate-configuration>

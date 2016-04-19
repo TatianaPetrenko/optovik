@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='windows-1251' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+      
+    <h:outputText value="Логин" /> <br/>
+    <p:inputText value="#{userModel.login}"/><br/>
+    <h:outputText value="Пароль" /> <br/>
+    <p:inputText value="#{userModel.pwd}"/><br/>
+    <h:outputText value="Подтверждение пароля" /> <br/>
+    <p:inputText value="#{userModel.pwdConfirm}"/><br/>
+    
+      <h:outputText value="Имя пользователя" /> <br/>
+      <p:inputText value="#{userModel.name}"/><br/>
+    <h:outputText value="E-mail" /> <br/>
+    <p:inputText value="#{userModel.email}"/><br/>
+    <h:outputText value="Сайт" /> <br/>
+    <p:inputText value="#{userModel.site}"/><br/>
+
+    <h:commandButton action="#{userModel.regWholesaler}" value='рег'/>
+        </h:form>
+    </h:body>
+</html>
+

@@ -7,9 +7,10 @@
     </h:head>
     <h:body>
         <h:form>
-            <h:inputText value="#{whServBean.thisWholesaler.name}"></h:inputText>
-            
-            
+            Отображаемое имя:<br/><h:inputText value="#{whServBean.thisWholesaler.name}"></h:inputText><br/>
+             E-mail:<br/><h:inputText value="#{whServBean.thisWholesaler.email}"></h:inputText><br/>
+            Сайт:<br/> <h:inputText value="#{whServBean.thisWholesaler.site}"></h:inputText><br/>
+            <h:commandLink action="#{whServBean.updateWH()}" value="Обновить"/>
         </h:form>
         
         

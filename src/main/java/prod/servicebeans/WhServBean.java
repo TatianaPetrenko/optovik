@@ -41,4 +41,9 @@ public class WhServBean implements Serializable{
         return n.getName();
     }
     
+   public void updateWH() {
+     WholesalerDaoImpl whdao = new WholesalerDaoImpl();
+     whdao.updateWholesaler(thisWholesaler);
+   
+   }
 }

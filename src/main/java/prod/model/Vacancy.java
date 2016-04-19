@@ -25,14 +25,15 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Altarix
  */
 @Entity
-@Table(name = "roles")
+@Table(name = "vacancy")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Roles.findAll", query = "SELECT r FROM Roles r"),
-    @NamedQuery(name = "Roles.findById", query = "SELECT r FROM Roles r WHERE r.id = :id"),
-    @NamedQuery(name = "Roles.findByCode", query = "SELECT r FROM Roles r WHERE r.code = :code"),
-    @NamedQuery(name = "Roles.findByLabel", query = "SELECT r FROM Roles r WHERE r.label = :label")})
-public class Roles implements Serializable {
+    @NamedQuery(name = "Vacancy.findAll", query = "SELECT v FROM Vacancy v"),
+    @NamedQuery(name = "Vacancy.findById", query = "SELECT v FROM Vacancy v WHERE v.id = :id"),
+    @NamedQuery(name = "Vacancy.findByName", query = "SELECT v FROM Vacancy v WHERE v.name = :name"),
+    @NamedQuery(name = "Vacancy.findByText", query = "SELECT v FROM Vacancy v WHERE v.text = :text"),
+    @NamedQuery(name = "Vacancy.findBySalary", query = "SELECT v FROM Vacancy v WHERE v.salary = :salary")})
+public class Vacancy implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -40,26 +41,24 @@ public class Roles implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Size(max = 128)
-    @Column(name = "code")
-    private String code;
-    @Size(max = 128)
-    @Column(name = "label")
-    private String label;
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @Size(max = 256)
+    @Column(name = "name")
+    private String name;
+    @Size(max = 2147483647)
+    @Column(name = "text")
+    private String text;
+    @Size(max = 512)
+    @Column(name = "salary")
+    private String salary;
+    @JoinColumn(name = "wh_id", referencedColumnName = "id")
     @ManyToOne
-    private Users userId;
+    private Wholesaler whId;
 
-    public Roles() {
+    public Vacancy() {
     }
 
-    public Roles(Integer id) {
+    public Vacancy(Integer id) {
         this.id = id;
-    }
-
-    public Roles(String code, String label) {
-        this.code = code;
-        this.label =  label;
     }
 
     public Integer getId() {
@@ -70,28 +69,36 @@ public class Roles implements Serializable {
         this.id = id;
     }
 
-    public String getCode() {
-        return code;
+    public String getName() {
+        return name;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getLabel() {
-        return label;
+    public String getText() {
+        return text;
     }
 
-    public void setLabel(String label) {
-        this.label = label;
+    public void setText(String text) {
+        this.text = text;
     }
 
-    public Users getUserId() {
-        return userId;
+    public String getSalary() {
+        return salary;
     }
 
-    public void setUserId(Users userId) {
-        this.userId = userId;
+    public void setSalary(String salary) {
+        this.salary = salary;
+    }
+
+    public Wholesaler getWhId() {
+        return whId;
+    }
+
+    public void setWhId(Wholesaler whId) {
+        this.whId = whId;
     }
 
     @Override
@@ -104,10 +111,10 @@ public class Roles implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Roles)) {
+        if (!(object instanceof Vacancy)) {
             return false;
         }
-        Roles other = (Roles) object;
+        Vacancy other = (Vacancy) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -116,7 +123,7 @@ public class Roles implements Serializable {
 
     @Override
     public String toString() {
-        return "prod.model.Roles[ id=" + id + " ]";
+        return "prod.model.Vacancy[ id=" + id + " ]";
     }
     
 }
