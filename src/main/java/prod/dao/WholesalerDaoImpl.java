@@ -28,7 +28,7 @@ import prod.service.HibernateUtil;
  */
 public class WholesalerDaoImpl {
 
-    Session session = HibernateUtil.getSessionFactory().openSession();
+    Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 
     public Wholesaler getName() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
