@@ -15,13 +15,11 @@
     <h:outputText value="Заработная плата" /> <br/>
     <p:inputText value="#{vacServBean.salary}"/><br/>
     <h:outputText value="Текст вакансии" /> <br/>
-  <pe:ckEditor id="editor" value="#{vacServBean.text}">  
-
-</pe:ckEditor>  
+  <p:editor  value="#{vacServBean.text}"/>
     
      
 
-    <h:commandLink action="#{userModel.regWholesaler}" value='Зарегистрироваться и продолжить'/>
+  <h:commandLink action="#{vacServBean.saveVac()}" value='Зарегистрироваться и продолжить'/>
         </h:form>
     </h:body>
 </html>

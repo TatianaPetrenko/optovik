@@ -6,9 +6,14 @@
 package prod.servicebeans;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import prod.model.Wholesaler;
+import prod.dao.VacancyDaoImpl;
+import prod.model.Vacancy;
 
 /**
  *
@@ -16,8 +21,9 @@ import prod.model.Wholesaler;
  */
 @ManagedBean
 @SessionScoped
-public class VacServBean implements Serializable{
-     private Integer id;
+public class VacServBean implements Serializable {
+
+    private Integer id;
 
     private String name;
 
@@ -27,6 +33,33 @@ public class VacServBean implements Serializable{
 
     private Wholesaler whId;
 
+    public void saveListener() {
+        text = text.replaceAll("\\r|\\n", "");
+
+        final FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Content",
+                text.length() > 150 ? text.substring(0, 100) : text);
+
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+// сохранить вакансию
+    public void saveVac() {
+        VacancyDaoImpl vacdao = new VacancyDaoImpl();
+        vacdao.newVac(this);
+
+    }
+    
+    public List<Vacancy> getVacs(){
+    
+    VacancyDaoImpl vacdao = new VacancyDaoImpl();
+       return vacdao.getWhVac();
+    }
+
+    public Vacancy getVacById(int id) {
+    VacancyDaoImpl vacdao = new VacancyDaoImpl();
+    Vacancy vacancy = vacdao.getVacByID(id);
+    return vacancy;
+    }
+    
     public Integer getId() {
         return id;
     }
@@ -66,6 +99,5 @@ public class VacServBean implements Serializable{
     public void setWhId(Wholesaler whId) {
         this.whId = whId;
     }
-    
-    
+
 }

@@ -28,7 +28,7 @@ import prod.service.HibernateUtil;
  */
 public class WholesalerDaoImpl {
 
-    Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+    Session session = HibernateUtil.getSessionFactory().openSession();
 
     public Wholesaler getName() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -38,12 +38,14 @@ public class WholesalerDaoImpl {
 //     Query query = session.createQuery(hql);
 //     //query.setParameter("groupId", groupId);
 //     List<Users> u = query.list();
+  Transaction tx = session.beginTransaction();
         Criteria criteria = session.createCriteria(Users.class);
         List<Users> u = (List<Users>) criteria.add(Restrictions.eq("username", name)).list();
 
         Criteria criteriaw = session.createCriteria(Wholesaler.class);
         Wholesaler n = (Wholesaler) criteriaw.add(Restrictions.eq("userId.id", u.get(0).getId()))
                 .uniqueResult();
+        tx.commit();
         return n;
     }
 
