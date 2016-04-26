@@ -5,6 +5,8 @@
  */
 package prod.service;
 
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -17,6 +19,16 @@ import org.hibernate.service.ServiceRegistry;
 public class HibernateUtil 
 {
    private static SessionFactory sessionFactory = buildSessionFactory();
+   
+ public static Session getSession() throws HibernateException {         
+   Session sess = null;       
+   try {         
+       sess = sessionFactory.getCurrentSession();  
+   } catch (org.hibernate.HibernateException he) {  
+       sess = sessionFactory.openSession();     
+   }             
+   return sess;
+} 
  
    private static SessionFactory buildSessionFactory()
    {

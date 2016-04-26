@@ -19,8 +19,9 @@
             </ui:define>
 
 
-            <ui:define name="content">
-                <ui:include src="WEB-INF/sections/menus/block-menu.xhtml" />
+            <ui:define name="content"  >
+                 
+                      <ui:include src="WEB-INF/sections/#{pages.page}" /> 
             </ui:define>
             
                <ui:define name="right-content">

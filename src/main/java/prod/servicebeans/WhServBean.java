@@ -9,6 +9,8 @@ import java.io.Serializable;
 import java.sql.SQLException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import org.hibernate.Session;
 import prod.dao.WholesalerDaoImpl;
 import prod.model.Wholesaler;
@@ -34,7 +36,7 @@ public class WhServBean implements Serializable{
    
     
     public String getByUsername() throws  SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
-    
+
         WholesalerDaoImpl whdao = new WholesalerDaoImpl();
         Wholesaler n = whdao.getName();
         setThisWholesaler(n);

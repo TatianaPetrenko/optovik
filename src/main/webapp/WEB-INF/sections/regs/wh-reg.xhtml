@@ -8,22 +8,35 @@
     </h:head>
     <h:body>
         <h:form>
-      
-    <h:outputText value="Логин" /> <br/>
-    <p:inputText value="#{userModel.login}"/><br/>
-    <h:outputText value="Пароль" /> <br/>
-    <p:inputText value="#{userModel.pwd}"/><br/>
-    <h:outputText value="Подтверждение пароля" /> <br/>
-    <p:inputText value="#{userModel.pwdConfirm}"/><br/>
-    
-      <h:outputText value="Имя пользователя" /> <br/>
-      <p:inputText value="#{userModel.name}"/><br/>
-    <h:outputText value="E-mail" /> <br/>
-    <p:inputText value="#{userModel.email}"/><br/>
-    <h:outputText value="Сайт" /> <br/>
-    <p:inputText value="#{userModel.site}"/><br/>
 
-    <h:commandLink action="#{userModel.regWholesaler}" value='Зарегистрироваться и продолжить'/>
+
+            <p:wizard nextLabel="Далее" backLabel="Назад"> 
+
+                <p:tab id="user-data" title="Регистрационные данные">
+                    <h:outputText value="Логин" /> <br/>
+                    <p:inputText value="#{userModel.login}"  required="true"/><br/>
+                    <h:outputText value="Пароль" /> <br/>
+                    <p:inputText value="#{userModel.pwd}"  required="true"/><br/>
+                    <h:outputText value="Подтверждение пароля" /> <br/>
+                    <p:inputText value="#{userModel.pwdConfirm}"  required="true"/><br/>
+                </p:tab>
+
+                <p:tab id="personal" title="Персональные данные">
+                    <h:outputText value="Имя пользователя" /> <br/>
+                    <p:inputText value="#{userModel.wh.name}"  required="true"/><br/>
+                    <h:outputText value="E-mail" /> <br/>
+                    <p:inputText value="#{userModel.wh.email}"/><br/>
+                    <h:outputText value="Сайт" /> <br/>
+                    <p:inputText value="#{userModel.wh.site}"/><br/>
+                       <h:commandLink action="#{userModel.regWholesaler}" value='Зарегистрироваться'/>
+                </p:tab>
+
+             
+
+
+            </p:wizard>
+
+
         </h:form>
     </h:body>
 </html>

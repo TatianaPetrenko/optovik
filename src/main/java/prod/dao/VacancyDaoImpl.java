@@ -24,7 +24,7 @@ import prod.servicebeans.VacServBean;
  */
 public class VacancyDaoImpl {
 
-    Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+    Session session = HibernateUtil.getSession();
 
     public void newVac(VacServBean n) {
         WholesalerDaoImpl whdao = new WholesalerDaoImpl();

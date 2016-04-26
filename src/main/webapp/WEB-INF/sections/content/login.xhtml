@@ -15,9 +15,10 @@
         Имя пользователя: <br/>
         <input name="j_username" type="text" /> <br />
         Пароль:<br/><input name="j_password" type="password" /> <br />
-        <input value="Войти" type="submit" class='link-button' /> <p:link outcome="/registration.xhtml" value='Зарегистрироваться'/>
+        <input value="Войти" type="submit" class='link-button' /> <br/> 
     </form>
-    
+           <h:form >
+               <p:commandLink action="#{pages.setPage('regs/menu-reg.xhtml')}" value='Зарегистрироваться' update=":main-content"/></h:form>
     <br />
     <c:if test="${param.status=='error'}">
         <label style="color:red">Invalid username or password!!</label>

@@ -21,33 +21,17 @@ public class UserModel implements Serializable{
     private String login;
     private String pwd;
     private String pwdConfirm;
-  private String name;
-  private String email;
-     private String site;
+  private Wholesaler wh = new Wholesaler();
 
-    public String getName() {
-        return name;
+    public Wholesaler getWh() {
+        return wh;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setWh(Wholesaler wh) {
+        this.wh = wh;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getSite() {
-        return site;
-    }
-
-    public void setSite(String site) {
-        this.site = site;
-    }
+   
 
 
     public void reset() {

@@ -6,6 +6,8 @@
 package prod.dao;
 
 import java.util.List;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -28,7 +30,7 @@ import prod.service.HibernateUtil;
  */
 public class WholesalerDaoImpl {
 
-    Session session = HibernateUtil.getSessionFactory().openSession();
+    Session session = HibernateUtil.getSession();
 
     public Wholesaler getName() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -50,7 +52,7 @@ public class WholesalerDaoImpl {
     }
 
     public void newWH(UserModel n) {
-        Wholesaler wh = new Wholesaler();
+        Wholesaler wh = n.getWh();
         Users u = new Users();
         u.setUsername(n.getLogin());
         u.setPassword(n.getPwd());
@@ -62,10 +64,7 @@ public class WholesalerDaoImpl {
         r.setUserId(u);
 
         session.save(r);
-
-        wh.setName(n.getName());
-        wh.setEmail(n.getEmail());
-        wh.setSite(n.getSite());
+ 
         wh.setUserId(u);
 
         session.save(wh);
