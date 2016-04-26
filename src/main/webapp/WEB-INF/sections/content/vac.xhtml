@@ -9,7 +9,9 @@
         <ui:param name="vac" value="#{vacServBean.getVacById(id)}"/>
     </h:head>
     <h:body>
-       <h1>#{vac.name}</h1>
+       <h1>#{vac.name} </h1>
+       
+       <h:outputText escape="false" value="#{vac.text}"/>
     </h:body>
 </html>
 

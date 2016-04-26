@@ -11,11 +11,11 @@
           <h:form>
               <h1>Добавить вакансию</h1>
     <h:outputText value="Название вакансии" /> <br/>
-    <p:inputText value="#{vacServBean.name}"/><br/>
+    <p:inputText value="#{vacServBean.vac.name}"/><br/>
     <h:outputText value="Заработная плата" /> <br/>
-    <p:inputText value="#{vacServBean.salary}"/><br/>
+    <p:inputText value="#{vacServBean.vac.salary}"/><br/>
     <h:outputText value="Текст вакансии" /> <br/>
-  <p:editor  value="#{vacServBean.text}"/>
+  <p:editor  value="#{vacServBean.vac.text}"/>
     
      
 

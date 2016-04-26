@@ -28,11 +28,8 @@ public class VacancyDaoImpl {
 
     public void newVac(VacServBean n) {
         WholesalerDaoImpl whdao = new WholesalerDaoImpl();
-        Vacancy vac = new Vacancy();
-        vac.setWhId(whdao.getName());
-        vac.setName(n.getName());
-        vac.setText(n.getText());
-        vac.setSalary(n.getSalary());
+        Vacancy vac = n.getVac();
+       
         Transaction tx = session.beginTransaction();
         session.save(vac);
 

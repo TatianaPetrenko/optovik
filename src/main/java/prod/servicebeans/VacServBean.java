@@ -23,21 +23,16 @@ import prod.model.Vacancy;
 @SessionScoped
 public class VacServBean implements Serializable {
 
-    private Integer id;
-
-    private String name;
-
-    private String text;
-
-    private String salary;
+    private Vacancy vac = new Vacancy();
 
     private Wholesaler whId;
 
     public void saveListener() {
-        text = text.replaceAll("\\r|\\n", "");
+        
+        vac.setText(vac.getText().replaceAll("\\r|\\n", "")); 
 
         final FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Content",
-                text.length() > 150 ? text.substring(0, 100) : text);
+                vac.getText().length() > 150 ? vac.getText().substring(0, 100) : vac.getText());
 
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
@@ -59,39 +54,16 @@ public class VacServBean implements Serializable {
     Vacancy vacancy = vacdao.getVacByID(id);
     return vacancy;
     }
+
+    public Vacancy getVac() {
+        return vac;
+    }
+
+    public void setVac(Vacancy vac) {
+        this.vac = vac;
+    }
     
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    public String getSalary() {
-        return salary;
-    }
-
-    public void setSalary(String salary) {
-        this.salary = salary;
-    }
-
+  
     public Wholesaler getWhId() {
         return whId;
     }
