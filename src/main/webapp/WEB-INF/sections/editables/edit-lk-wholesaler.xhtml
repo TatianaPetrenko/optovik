@@ -1,15 +1,16 @@
 <?xml version='1.0' encoding='windows-1251' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
         <h:form>
-            Отображаемое имя:<br/><h:inputText value="#{whServBean.thisWholesaler.name}"></h:inputText><br/>
-             E-mail:<br/><h:inputText value="#{whServBean.thisWholesaler.email}"></h:inputText><br/>
-            Сайт:<br/> <h:inputText value="#{whServBean.thisWholesaler.site}"></h:inputText><br/>
+            <br/><p:inputText class="input-text" value="#{whServBean.thisWholesaler.name}" placeholder="Отображаемое имя"/><br/>
+            <br/><p:inputText class="input-text" value="#{whServBean.thisWholesaler.email}" placeholder="E-mail"/><br/>
+            <br/> <p:inputText class="input-text" value="#{whServBean.thisWholesaler.site}" placeholder="Сайт"/><br/>
             <h:commandLink action="#{whServBean.updateWH()}" value="Обновить"/>
         </h:form>
         

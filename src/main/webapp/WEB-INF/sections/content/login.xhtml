@@ -11,11 +11,11 @@
         <div id="logform">
            <h3>Войти на портал</h3>
     <form method="post" action="j_spring_security_check">
-        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-        Имя пользователя: <br/>
-        <input name="j_username" type="text" /> <br />
-        Пароль:<br/><input name="j_password" type="password" /> <br />
-        <input value="Войти" type="submit" class='link-button' /> <br/> 
+        <input  type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+      
+        <input class="input-text" name="j_username" type="text"  placeholder="Логин"/> <br />
+        <br/><input class="input-text" name="j_password" type="password" placeholder="Пароль"/> <br /><br />
+        <input value="Войти" type="submit" class='button-link'/>  или
     </form>
            <h:form >
                <p:commandLink action="#{pages.setPage('regs/menu-reg.xhtml')}" value='Зарегистрироваться' update=":main-content"/></h:form>

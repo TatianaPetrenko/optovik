@@ -10,8 +10,7 @@ http://www.springframework.org/schema/security/spring-security.xsd">
         <intercept-url pattern="/main/wholesaler/*" access="ROLE_WHOLESALER" />
         <form-login login-page="/index.xhtml" default-target-url="/main/wholesaler/wholesaler.xhtml"
             authentication-failure-url="/index.xhtml?status=error" />
-         
-<logout logout-success-url="/" />
+
     </http>
  
      <authentication-manager>

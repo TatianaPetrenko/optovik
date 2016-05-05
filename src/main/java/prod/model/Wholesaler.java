@@ -38,6 +38,15 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Wholesaler.findByEmail", query = "SELECT w FROM Wholesaler w WHERE w.email = :email")})
 public class Wholesaler implements Serializable {
 
+    @Size(max = 2147483647)
+    @Column(name = "act_description")
+    private String actDescription;
+    @Size(max = 256)
+    @Column(name = "trade_mark")
+    private String tradeMark;
+    @OneToMany(mappedBy = "whId")
+    private Collection<Product> productCollection;
+
     @OneToMany(mappedBy = "whId")
     private Collection<Vacancy> vacancyCollection;
     private static final long serialVersionUID = 1L;
@@ -139,6 +148,31 @@ public class Wholesaler implements Serializable {
 
     public void setVacancyCollection(Collection<Vacancy> vacancyCollection) {
         this.vacancyCollection = vacancyCollection;
+    }
+
+    public String getActDescription() {
+        return actDescription;
+    }
+
+    public void setActDescription(String actDescription) {
+        this.actDescription = actDescription;
+    }
+
+    public String getTradeMark() {
+        return tradeMark;
+    }
+
+    public void setTradeMark(String tradeMark) {
+        this.tradeMark = tradeMark;
+    }
+
+    @XmlTransient
+    public Collection<Product> getProductCollection() {
+        return productCollection;
+    }
+
+    public void setProductCollection(Collection<Product> productCollection) {
+        this.productCollection = productCollection;
     }
     
 }

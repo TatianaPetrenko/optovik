@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-
+   
       >
     <h:head>
         <title>Портал Оптовик</title>
@@ -21,7 +21,11 @@
 
             <ui:define name="content"  >
 
-                <ui:include src="WEB-INF/sections/#{pages.page}" /> 
+                <div    style="text-align: center; font-size: 36px">
+                <h:outputText value=" УПС. Здесь ничего нет." style="text-align: center; font-size: 46px; font-style: bold"/>
+                </div>
+          
+          
             </ui:define>
 
             <ui:define name="right-content">
@@ -35,9 +39,7 @@
             <ui:define name="footer">
                 <ui:include src="WEB-INF/sections/footer.xhtml" />
             </ui:define>
-            <ui:define name="menu">
-                <ui:include src="WEB-INF/sections/menus/main_menu.xhtml" />
-            </ui:define>
+
         </ui:composition>
     </h:body>
 </html>

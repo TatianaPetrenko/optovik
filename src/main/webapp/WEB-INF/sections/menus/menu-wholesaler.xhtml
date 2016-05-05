@@ -12,14 +12,18 @@
         <h:form>
 
             <p:tabMenu class="tabmenu" >
-                <p:menuitem value="Личный кабинет" action="#{pages.setPage('/editables/edit-lk-wholesaler.xhtml')}" update=":main-content">
+                <p:menuitem value="Личный кабинет" action="#{pages.setWh_page('editables/edit-lk-wholesaler.xhtml')}" update=":main-content">
           
                 </p:menuitem>
-                <p:menuitem value="Разместить вакансию" action="#{pages.setPage('/adds/add-vacancy.xhtml')}" update=":main-content">
+                <p:menuitem value="Разместить вакансию" action="#{pages.setWh_page('adds/add-vacancy.xhtml')}" update=":main-content">
 
                 </p:menuitem>
                 
-                   <p:menuitem value="Мои вакансии" action="#{pages.setPage('/content/wh-vacs.xhtml')}" update=":main-content">
+                   <p:menuitem value="Мои вакансии" action="#{pages.setWh_page('content/wh-vacs.xhtml')}" update=":main-content">
+
+                </p:menuitem>
+                
+                 <p:menuitem value="Добавить товар" action="#{pages.setWh_page('adds/add_product.xhtml')}" update=":main-content">
 
                 </p:menuitem>
             </p:tabMenu>

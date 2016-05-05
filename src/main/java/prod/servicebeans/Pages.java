@@ -25,7 +25,7 @@ public class Pages implements Serializable {
 
     @PostConstruct
     public void init() {
-        wh_page = "";
+        wh_page = "menus/block-menu.xhtml";
         page = "menus/block-menu.xhtml"; //  Default include.
         vacid = 0;
     }

@@ -6,6 +6,9 @@
     <class>prod.model.Users</class>
     <class>prod.model.Wholesaler</class>
     <class>prod.model.Vacancy</class>
+    <class>prod.model.Product</class>
+    <class>prod.model.VolumeClassif</class>
+    <class>prod.model.ContainerClassif</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/optovik"/>

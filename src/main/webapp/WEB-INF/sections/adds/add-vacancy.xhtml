@@ -8,18 +8,19 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-          <h:form>
-              <h1>Добавить вакансию</h1>
-    <h:outputText value="Название вакансии" /> <br/>
-    <p:inputText value="#{vacServBean.vac.name}"/><br/>
-    <h:outputText value="Заработная плата" /> <br/>
-    <p:inputText value="#{vacServBean.vac.salary}"/><br/>
-    <h:outputText value="Текст вакансии" /> <br/>
-  <p:editor  value="#{vacServBean.vac.text}"/>
-    
-     
+        <h:form>
+            <h1>Добавить вакансию</h1>
+            <br/>
+            <p:inputText class="input-text" value="#{vacServBean.vac.name}" placeholder="Название вакансии"/><br/>
+            <br/>
+            <p:inputText class="input-text" value="#{vacServBean.vac.salary}" placeholder="Заработная плата"/><br/><br/>
+            <br/>
+            <h:outputText  value="Текст вакансии" /> <br/>
+            <p:editor  value="#{vacServBean.vac.text}"/>
 
-  <h:commandLink action="#{vacServBean.saveVac()}" value='Зарегистрироваться и продолжить'/>
+
+
+            <h:commandLink action="#{vacServBean.saveVac()}" value='Создать вакансию'/>
         </h:form>
     </h:body>
 </html>

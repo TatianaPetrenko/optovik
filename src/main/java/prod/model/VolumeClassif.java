@@ -6,34 +6,34 @@
 package prod.model;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
-
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author Altarix
  */
 @Entity
-@Table(name = "roles")
+@Table(name = "volume_classif")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Roles.findAll", query = "SELECT r FROM Roles r"),
-    @NamedQuery(name = "Roles.findById", query = "SELECT r FROM Roles r WHERE r.id = :id"),
-    @NamedQuery(name = "Roles.findByCode", query = "SELECT r FROM Roles r WHERE r.code = :code"),
-    @NamedQuery(name = "Roles.findByLabel", query = "SELECT r FROM Roles r WHERE r.label = :label")})
-public class Roles implements Serializable {
+    @NamedQuery(name = "VolumeClassif.findAll", query = "SELECT v FROM VolumeClassif v"),
+    @NamedQuery(name = "VolumeClassif.findById", query = "SELECT v FROM VolumeClassif v WHERE v.id = :id"),
+    @NamedQuery(name = "VolumeClassif.findByName", query = "SELECT v FROM VolumeClassif v WHERE v.name = :name"),
+    @NamedQuery(name = "VolumeClassif.findByShortName", query = "SELECT v FROM VolumeClassif v WHERE v.shortName = :shortName")})
+public class VolumeClassif implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -41,26 +41,20 @@ public class Roles implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+    @Size(max = 256)
+    @Column(name = "name")
+    private String name;
     @Size(max = 128)
-    @Column(name = "code")
-    private String code;
-    @Size(max = 128)
-    @Column(name = "label")
-    private String label;
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    @ManyToOne
-    private Users userId;
+    @Column(name = "short_name")
+    private String shortName;
+    @OneToMany(mappedBy = "volClass")
+    private Collection<Product> productCollection;
 
-    public Roles() {
+    public VolumeClassif() {
     }
 
-    public Roles(Integer id) {
+    public VolumeClassif(Integer id) {
         this.id = id;
-    }
-
-    public Roles(String code, String label) {
-        this.code = code;
-        this.label =  label;
     }
 
     public Integer getId() {
@@ -71,28 +65,29 @@ public class Roles implements Serializable {
         this.id = id;
     }
 
-    public String getCode() {
-        return code;
+    public String getName() {
+        return name;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getLabel() {
-        return label;
+    public String getShortName() {
+        return shortName;
     }
 
-    public void setLabel(String label) {
-        this.label = label;
+    public void setShortName(String shortName) {
+        this.shortName = shortName;
     }
 
-    public Users getUserId() {
-        return userId;
+    @XmlTransient
+    public Collection<Product> getProductCollection() {
+        return productCollection;
     }
 
-    public void setUserId(Users userId) {
-        this.userId = userId;
+    public void setProductCollection(Collection<Product> productCollection) {
+        this.productCollection = productCollection;
     }
 
     @Override
@@ -105,10 +100,10 @@ public class Roles implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Roles)) {
+        if (!(object instanceof VolumeClassif)) {
             return false;
         }
-        Roles other = (Roles) object;
+        VolumeClassif other = (VolumeClassif) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -117,7 +112,7 @@ public class Roles implements Serializable {
 
     @Override
     public String toString() {
-        return "prod.model.Roles[ id=" + id + " ]";
+        return  name ;
     }
     
 }

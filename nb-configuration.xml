@@ -10,6 +10,7 @@ Without this configuration present, some functionality in the IDE may be limited
         <config-files>
             <config-file>src/main/webapp/WEB-INF/hibernate-spring.xml</config-file>
             <config-file>src/main/webapp/WEB-INF/spring-security.xml</config-file>
+            <config-file>src/main/webapp/WEB-INF/springsecurity.taglib.xml</config-file>
         </config-files>
         <config-file-groups/>
     </spring-data>

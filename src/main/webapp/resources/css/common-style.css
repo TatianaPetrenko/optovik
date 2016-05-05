@@ -4,6 +4,42 @@ html {
 
 }
 
+
+.ui-inputswitch-handle {
+    
+    
+    background-color: #3b589a!important;
+    background-image: none!important;
+    
+}
+
+.ui-inputswitch {
+    
+     font-family: 'Roboto Condensed', sans-serif!important;
+    font-size: 16px!important;
+    
+}
+
+
+.button-link {
+    border:none!important;
+    background-color: transparent!important;
+    cursor: pointer;
+    color: #3b589a;
+    font-family: 'Roboto Condensed', sans-serif!important;
+    font-size: 16px!important;
+    text-decoration: underline;
+    padding: 0px;
+}
+.input-text {
+    font-family: 'Roboto Condensed', sans-serif!important;
+    border:none!important;
+    border-bottom: 2px solid #ccc!important;
+    background-color: transparent!important;
+    box-shadow: none!important;
+    font-size: 16px!important;
+}
+
 a {
     color: #3b589a;
     font-family: 'Roboto Condensed', sans-serif!important;
@@ -57,7 +93,7 @@ body > #page {
 
 #footer {
     position: relative;
-    margin-top: -90px; /* отрицательное значение высоты футера */
+    margin-top: -90px; /* ????????????? ???????? ?????? ?????? */
     height: 90px;
     clear:both;
     background-color: #222;
@@ -82,7 +118,7 @@ body > #page {
 
 
 
-/*Ненавижу блядские праймы*/
+/*???????? ???????? ??????*/
 
 .ui-clock {
     border: none!important;
@@ -102,6 +138,7 @@ body > #page {
     -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.1);
     -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.1);
     box-shadow: -1px 1px 5px 0px rgba(0,0,0,0.1);
+     min-height: 800px;
 }
 
 
@@ -153,16 +190,7 @@ body > #page {
 
 }
 
-#news-opt {
 
-    margin-left: -2px;
-    background-color: white;
-    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
-    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
-    box-shadow: -1px 1px 5px 0px rgba(0,0,0,0.2);
-    padding: 38px 12px;
-
-}
 
 #block-menu {
 
@@ -192,7 +220,6 @@ body > #page {
 }
 
 #menu, #menu form {
-    
+
     width: 100%;
 }
-
