@@ -38,7 +38,7 @@ public class ProductDaoImpl {
 
     public List<Product> getWhProd() {
         WholesalerDaoImpl whdao = new WholesalerDaoImpl();
-        Wholesaler wh = whdao.getName();
+        Wholesaler wh = whdao.getCurrentWh();
         Transaction tx = session.beginTransaction();
         Criteria criteria = session.createCriteria(Product.class);
         List<Product> vacs = (List<Product>) criteria.add(Restrictions.eq("whId", wh)).list();

@@ -38,6 +38,13 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Wholesaler.findByEmail", query = "SELECT w FROM Wholesaler w WHERE w.email = :email")})
 public class Wholesaler implements Serializable {
 
+    @JoinColumn(name = "city", referencedColumnName = "city_id")
+    @ManyToOne
+    private City city;
+    @JoinColumn(name = "region", referencedColumnName = "region_id")
+    @ManyToOne
+    private Region region;
+
     @Size(max = 2147483647)
     @Column(name = "act_description")
     private String actDescription;
@@ -173,6 +180,22 @@ public class Wholesaler implements Serializable {
 
     public void setProductCollection(Collection<Product> productCollection) {
         this.productCollection = productCollection;
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
+
+    public Region getRegion() {
+        return region;
+    }
+
+    public void setRegion(Region region) {
+        this.region = region;
     }
     
 }

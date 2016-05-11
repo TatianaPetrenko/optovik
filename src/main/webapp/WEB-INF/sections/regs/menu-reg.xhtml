@@ -10,14 +10,14 @@
     <h:body>
         Добро пожаловать на портал. В качестве кого вы хотите зарегистрироваться?
 
-        <p:tabView  orientation="left">
+        <p:tabView class="regtabs"  orientation="left">
 
             <p:tab title="Оптовик">
                 <ui:include src="wh-reg.xhtml"/>
             </p:tab>
 
             <p:tab title="Соискатель">
-
+                <ui:include src="app-reg.xhtml"/>
             </p:tab>
 
             <p:tab title="Реализатор">
@@ -36,7 +36,7 @@
 
             </p:tab>
 
-           
+
         </p:tabView>
     </h:body>
 </html>

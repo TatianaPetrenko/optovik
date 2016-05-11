@@ -38,6 +38,9 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Users implements Serializable {
 
     @OneToMany(mappedBy = "userId")
+    private Collection<Applicant> applicantCollection;
+
+    @OneToMany(mappedBy = "userId")
     private Collection<Wholesaler> wholesalerCollection;
 
     private static final long serialVersionUID = 1L;
@@ -144,6 +147,15 @@ public class Users implements Serializable {
 
     public void setWholesalerCollection(Collection<Wholesaler> wholesalerCollection) {
         this.wholesalerCollection = wholesalerCollection;
+    }
+
+    @XmlTransient
+    public Collection<Applicant> getApplicantCollection() {
+        return applicantCollection;
+    }
+
+    public void setApplicantCollection(Collection<Applicant> applicantCollection) {
+        this.applicantCollection = applicantCollection;
     }
     
 }

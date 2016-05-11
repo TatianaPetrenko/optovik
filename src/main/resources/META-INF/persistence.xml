@@ -9,6 +9,13 @@
     <class>prod.model.Product</class>
     <class>prod.model.VolumeClassif</class>
     <class>prod.model.ContainerClassif</class>
+    <class>prod.model.Place</class>
+    <class>prod.model.Applicant</class>
+    <class>prod.model.Country</class>
+    <class>prod.model.City</class>
+    <class>prod.model.Region</class>
+    <class>prod.model.ProductCat</class>
+    <class>prod.model.ProductCategory</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/optovik"/>

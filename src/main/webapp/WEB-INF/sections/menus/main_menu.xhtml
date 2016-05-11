@@ -10,16 +10,10 @@
         <h:form>
 
             <p:tabMenu class="tabmenu" >
-                <p:menuitem value="Главная" action="#{pages.setPage('block-menu.xhtml')}" update=":main-content">
+                <p:menuitem value="Главная" action="#{pages.setPage('menus/block-menu.xhtml')}" update=":main-content">
           
                 </p:menuitem>
-                <p:menuitem value="Разместить вакансию" action="#{pages.setPage('/adds/add-vacancy.xhtml')}" update=":main-content">
-
-                </p:menuitem>
-                
-                   <p:menuitem value="Мои вакансии" action="#{pages.setPage('/content/wh-vacs.xhtml')}" update=":main-content">
-
-                </p:menuitem>
+              
             </p:tabMenu>
              
         </h:form>

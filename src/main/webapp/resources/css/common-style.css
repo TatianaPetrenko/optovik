@@ -6,18 +6,18 @@ html {
 
 
 .ui-inputswitch-handle {
-    
-    
+
+
     background-color: #3b589a!important;
     background-image: none!important;
-    
+
 }
 
 .ui-inputswitch {
-    
-     font-family: 'Roboto Condensed', sans-serif!important;
+
+    font-family: 'Roboto Condensed', sans-serif!important;
     font-size: 16px!important;
-    
+
 }
 
 
@@ -31,14 +31,38 @@ html {
     text-decoration: underline;
     padding: 0px;
 }
-.input-text {
+.input-text, .hasDatepicker, .ui-autocomplete-input {
     font-family: 'Roboto Condensed', sans-serif!important;
     border:none!important;
     border-bottom: 2px solid #ccc!important;
     background-color: transparent!important;
     box-shadow: none!important;
     font-size: 16px!important;
+    
+        width: 200px;
 }
+
+.ui-fieldset-legend {
+    background-color: rgb(38, 67, 132)!important;
+    background-image: none!important;
+    color: whitesmoke!important;
+    text-shadow: none!important;
+    font-size: 1em;   
+
+}
+.regtabs > .ui-tabs-nav {
+    border: none!important;
+    height: 600px;
+    border-right: 1px solid #DDDDDD!important;
+
+}
+.regtabs > .ui-tabs-nav li {
+        margin-right: -1px!important;
+    
+    
+}
+
+
 
 a {
     color: #3b589a;
@@ -138,7 +162,7 @@ body > #page {
     -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.1);
     -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.1);
     box-shadow: -1px 1px 5px 0px rgba(0,0,0,0.1);
-     min-height: 800px;
+    min-height: 800px;
 }
 
 

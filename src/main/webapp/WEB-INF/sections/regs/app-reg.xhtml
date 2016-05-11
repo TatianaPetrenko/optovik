@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='windows-1251' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+
+
+            <p:fieldset legend="Регистрационные данные" style="margin-bottom:20px">
+           <br/>
+                <p:inputText value="#{userModel.login}" placeholder="Логин" class="input-text"  required="true" validatorMessage='Поле "Логин" обязательно для заполнения '/><br/>
+               <br/>
+               <p:messages id="messages" showDetail="true" autoUpdate="true" />
+               <p:password id="pwd1" value="#{userModel.pwd}" placeholder="Пароль" class="input-text"  required="true"/><br/>
+                 <br/>
+                 <p:password id="pwd2" value="#{userModel.pwdConfirm}" placeholder="Подтверждение пароля" class="input-text" required="true" match="pwd1"/><br/>
+
+            </p:fieldset>
+            <p:fieldset legend="Персональные данные" style="margin-bottom:20px">
+
+                <br/>
+                <p:inputText value="#{userModel.appl.name}"  required="true" placeholder="ФИО" class="input-text" /><br/>
+                <br/>
+                <p:calendar placeholder="Дата рождения"  id="rus" value="#{userModel.appl.birthday}" locale="ru" navigator="true" pattern="yyyy-MMM-dd" />
+                <br/>
+
+
+                <br/>
+                <p:autoComplete placeholder="Место жительства" id="cities" value="#{userModel.appl.homeTown}" completeMethod="#{classifServBean.completeCity}"
+                                var="city" itemLabel="#{city.name}" itemValue="#{city}"  maxResults="10" inputStyle="input-text" forceSelection="true" groupBy="#{city.countryId.name}"/>
+                <br/> <br/>Пол<br/>
+                <p:selectOneRadio id="sex" value="#{userModel.appl.sex}">
+                    <f:selectItem itemLabel=" женский" itemValue="0" />
+                    <f:selectItem itemLabel=" мужской" itemValue="1" />
+             
+                </p:selectOneRadio>
+                <br/>
+            
+
+            </p:fieldset>
+            <h:commandLink action="#{userModel.regApplicant}" value='Зарегистрироваться'/>
+
+
+
+        </h:form>
+    </h:body>
+</html>
+

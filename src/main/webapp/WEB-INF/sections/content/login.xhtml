@@ -18,10 +18,10 @@
         <input value="Войти" type="submit" class='button-link'/>  или
     </form>
            <h:form >
-               <p:commandLink action="#{pages.setPage('regs/menu-reg.xhtml')}" value='Зарегистрироваться' update=":main-content"/></h:form>
+               <h:commandLink value='Зарегистрироваться' action="#{pages.setPage('regs/menu-reg.xhtml')}"/></h:form>
     <br />
     <c:if test="${param.status=='error'}">
-        <label style="color:red">Invalid username or password!!</label>
+        <label style="color:red">Неправильное имя пользователя или пароль</label>
     </c:if>
     <c:if test="${param.status=='logout'}">
         <label style="color:green">Logged out successfully!</label>

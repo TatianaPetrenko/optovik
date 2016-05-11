@@ -7,6 +7,9 @@ package prod.servicebeans;
 
 import java.io.Serializable;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
@@ -21,7 +24,7 @@ import prod.model.Wholesaler;
  */
 @ManagedBean
 @SessionScoped
-public class WhServBean implements Serializable{
+public class WhServBean implements Serializable {
 
     Wholesaler thisWholesaler;
 
@@ -33,19 +36,34 @@ public class WhServBean implements Serializable{
         this.thisWholesaler = thisWholesaler;
     }
 
+     @PostConstruct
+    public void init() {
+        try {
+            thisWholesaler = getByUsername();
+        } catch (SQLException ex) {
+            Logger.getLogger(WhServBean.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(WhServBean.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(WhServBean.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(WhServBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
    
-    
-    public String getByUsername() throws  SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
-
-        WholesalerDaoImpl whdao = new WholesalerDaoImpl();
-        Wholesaler n = whdao.getName();
-        setThisWholesaler(n);
-        return n.getName();
     }
     
-   public void updateWH() {
-     WholesalerDaoImpl whdao = new WholesalerDaoImpl();
-     whdao.updateWholesaler(thisWholesaler);
-   
-   }
+    
+    
+    public Wholesaler getByUsername() throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+
+        WholesalerDaoImpl whdao = new WholesalerDaoImpl();
+        Wholesaler n = whdao.getCurrentWh();
+        return n;
+    }
+
+    public void updateWH() {
+        WholesalerDaoImpl whdao = new WholesalerDaoImpl();
+        whdao.updateWholesaler(thisWholesaler);
+
+    }
 }

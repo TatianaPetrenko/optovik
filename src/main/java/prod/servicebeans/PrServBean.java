@@ -28,7 +28,6 @@ public class PrServBean implements Serializable {
     private Wholesaler whId;
     private Product prod = new Product();
 
-       
     public Wholesaler getWhId() {
         return whId;
     }
@@ -52,7 +51,6 @@ public class PrServBean implements Serializable {
     }
 
     public List<Product> getProds() {
-
         ProductDaoImpl proddao = new ProductDaoImpl();
         return proddao.getWhProd();
     }
@@ -62,11 +60,10 @@ public class PrServBean implements Serializable {
         return proddao.getProdByID(id);
     }
 
-    
     public List<VolumeClassif> getVols() {
-    ProductDaoImpl proddao = new ProductDaoImpl();
-List<VolumeClassif> vols = proddao.getVols();
-    return vols;
+        ProductDaoImpl proddao = new ProductDaoImpl();
+        List<VolumeClassif> vols = proddao.getVols();
+        return vols;
     }
-    
+
 }

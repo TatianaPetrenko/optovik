@@ -9,33 +9,26 @@
     <h:body>
         <h:form>
 
+            <p:fieldset legend="Регистрационные данные" style="margin-bottom:20px">
 
-            <p:wizard nextLabel="Далее" backLabel="Назад"> 
+                <p:inputText value="#{userModel.login}" placeholder="Логин" class="input-text"  required="true"/><br/>
+                <br/>
+                <p:messages id="messages" showDetail="true" autoUpdate="true" />
+                <p:password id="pwd1" value="#{userModel.pwd}" placeholder="Пароль" class="input-text"  required="true"/><br/>
+                <br/>
+                <p:password id="pwd2" value="#{userModel.pwdConfirm}" placeholder="Подтверждение пароля" class="input-text" required="true" match="pwd1"/><br/>
 
-                <p:tab id="user-data" title="Регистрационные данные">
-                    <h:outputText value="Логин" /> <br/>
-                    <p:inputText value="#{userModel.login}"  required="true"/><br/>
-                    <h:outputText value="Пароль" /> <br/>
-                    <p:inputText value="#{userModel.pwd}"  required="true"/><br/>
-                    <h:outputText value="Подтверждение пароля" /> <br/>
-                    <p:inputText value="#{userModel.pwdConfirm}"  required="true"/><br/>
-                </p:tab>
+            </p:fieldset>
+            <p:fieldset legend="Персональные данные" style="margin-bottom:20px">
 
-                <p:tab id="personal" title="Персональные данные">
-                    <h:outputText value="Имя пользователя" /> <br/>
-                    <p:inputText value="#{userModel.wh.name}"  required="true"/><br/>
-                    <h:outputText value="E-mail" /> <br/>
-                    <p:inputText value="#{userModel.wh.email}"/><br/>
-                    <h:outputText value="Сайт" /> <br/>
-                    <p:inputText value="#{userModel.wh.site}"/><br/>
-                       <h:commandLink action="#{userModel.regWholesaler}" value='Зарегистрироваться'/>
-                </p:tab>
-
-             
-
-
-            </p:wizard>
-
+                <br/>
+                <p:inputText value="#{userModel.wh.name}"  required="true" placeholder="Название/ФИО" class="input-text"/><br/>
+                <br/>
+                <p:inputText value="#{userModel.wh.email}" placeholder="E-mail" class="input-text"/><br/>
+                <br/>
+                <p:inputText value="#{userModel.wh.site}" placeholder="Сайт" class="input-text"/><br/>
+            </p:fieldset>
+            <h:commandLink action="#{userModel.regWholesaler}" value='Зарегистрироваться'/>
 
         </h:form>
     </h:body>

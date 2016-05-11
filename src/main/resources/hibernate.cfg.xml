@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-  <session-factory>
-    <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-    <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/optovik</property>
-    <property name="hibernate.connection.username">postgres</property>
-    <property name="hibernate.connection.password">postgres</property>
-    <mapping class="prod.model.Users"/>
-    <mapping class="prod.model.Roles"/>
-    <mapping class="prod.model.Wholesaler"/>
-    <mapping class="prod.model.Vacancy"/>
-    <mapping class="prod.model.Product"/>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/optovik</property>
+        <property name="hibernate.connection.username">postgres</property>
+        <property name="hibernate.connection.password">postgres</property>
+        <mapping class="prod.model.Users"/>
+        <mapping class="prod.model.Roles"/>
+        <mapping class="prod.model.Wholesaler"/>
+        <mapping class="prod.model.Vacancy"/>
+        <mapping class="prod.model.Product"/>
         <mapping class="prod.model.VolumeClassif"/>
-          <mapping class="prod.model.ContainerClassif"/>
-  </session-factory>
+        <mapping class="prod.model.ContainerClassif"/>
+        <mapping class="prod.model.Applicant"/>
+        <mapping class="prod.model.City"/>
+        <mapping class="prod.model.Country"/>
+        <mapping class="prod.model.Region"/>
+                        
+        <mapping class="prod.model.ProductCat"/>
+        <mapping class="prod.model.ProductCategory"/>
+    </session-factory>
 </hibernate-configuration>
