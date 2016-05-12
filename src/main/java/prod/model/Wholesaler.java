@@ -6,7 +6,6 @@
 package prod.model;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,15 +16,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Tatiana
+ * @author Altarix
  */
 @Entity
 @Table(name = "wholesaler")
@@ -35,27 +32,11 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Wholesaler.findById", query = "SELECT w FROM Wholesaler w WHERE w.id = :id"),
     @NamedQuery(name = "Wholesaler.findBySite", query = "SELECT w FROM Wholesaler w WHERE w.site = :site"),
     @NamedQuery(name = "Wholesaler.findByName", query = "SELECT w FROM Wholesaler w WHERE w.name = :name"),
-    @NamedQuery(name = "Wholesaler.findByEmail", query = "SELECT w FROM Wholesaler w WHERE w.email = :email")})
+    @NamedQuery(name = "Wholesaler.findByEmail", query = "SELECT w FROM Wholesaler w WHERE w.email = :email"),
+    @NamedQuery(name = "Wholesaler.findByActDescription", query = "SELECT w FROM Wholesaler w WHERE w.actDescription = :actDescription"),
+    @NamedQuery(name = "Wholesaler.findByTradeMark", query = "SELECT w FROM Wholesaler w WHERE w.tradeMark = :tradeMark")})
 public class Wholesaler implements Serializable {
 
-    @JoinColumn(name = "city", referencedColumnName = "city_id")
-    @ManyToOne
-    private City city;
-    @JoinColumn(name = "region", referencedColumnName = "region_id")
-    @ManyToOne
-    private Region region;
-
-    @Size(max = 2147483647)
-    @Column(name = "act_description")
-    private String actDescription;
-    @Size(max = 256)
-    @Column(name = "trade_mark")
-    private String tradeMark;
-    @OneToMany(mappedBy = "whId")
-    private Collection<Product> productCollection;
-
-    @OneToMany(mappedBy = "whId")
-    private Collection<Vacancy> vacancyCollection;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -72,6 +53,18 @@ public class Wholesaler implements Serializable {
     @Size(max = 256)
     @Column(name = "email")
     private String email;
+    @Size(max = 2147483647)
+    @Column(name = "act_description")
+    private String actDescription;
+    @Size(max = 256)
+    @Column(name = "trade_mark")
+    private String tradeMark;
+    @JoinColumn(name = "city", referencedColumnName = "city_id")
+    @ManyToOne
+    private City city;
+    @JoinColumn(name = "region", referencedColumnName = "region_id")
+    @ManyToOne
+    private Region region;
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     @ManyToOne
     private Users userId;
@@ -115,6 +108,38 @@ public class Wholesaler implements Serializable {
         this.email = email;
     }
 
+    public String getActDescription() {
+        return actDescription;
+    }
+
+    public void setActDescription(String actDescription) {
+        this.actDescription = actDescription;
+    }
+
+    public String getTradeMark() {
+        return tradeMark;
+    }
+
+    public void setTradeMark(String tradeMark) {
+        this.tradeMark = tradeMark;
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
+
+    public Region getRegion() {
+        return region;
+    }
+
+    public void setRegion(Region region) {
+        this.region = region;
+    }
+
     public Users getUserId() {
         return userId;
     }
@@ -146,56 +171,6 @@ public class Wholesaler implements Serializable {
     @Override
     public String toString() {
         return "prod.model.Wholesaler[ id=" + id + " ]";
-    }
-
-    @XmlTransient
-    public Collection<Vacancy> getVacancyCollection() {
-        return vacancyCollection;
-    }
-
-    public void setVacancyCollection(Collection<Vacancy> vacancyCollection) {
-        this.vacancyCollection = vacancyCollection;
-    }
-
-    public String getActDescription() {
-        return actDescription;
-    }
-
-    public void setActDescription(String actDescription) {
-        this.actDescription = actDescription;
-    }
-
-    public String getTradeMark() {
-        return tradeMark;
-    }
-
-    public void setTradeMark(String tradeMark) {
-        this.tradeMark = tradeMark;
-    }
-
-    @XmlTransient
-    public Collection<Product> getProductCollection() {
-        return productCollection;
-    }
-
-    public void setProductCollection(Collection<Product> productCollection) {
-        this.productCollection = productCollection;
-    }
-
-    public City getCity() {
-        return city;
-    }
-
-    public void setCity(City city) {
-        this.city = city;
-    }
-
-    public Region getRegion() {
-        return region;
-    }
-
-    public void setRegion(Region region) {
-        this.region = region;
     }
     
 }

@@ -11,10 +11,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import org.hibernate.Session;
+import org.springframework.jmx.export.annotation.ManagedAttribute;
 import prod.dao.WholesalerDaoImpl;
 import prod.model.Wholesaler;
 
@@ -25,7 +27,7 @@ import prod.model.Wholesaler;
 @ManagedBean
 @SessionScoped
 public class WhServBean implements Serializable {
-
+     @ManagedProperty("#{wholesaler}")
     Wholesaler thisWholesaler;
 
     public Wholesaler getThisWholesaler() {
@@ -36,21 +38,6 @@ public class WhServBean implements Serializable {
         this.thisWholesaler = thisWholesaler;
     }
 
-     @PostConstruct
-    public void init() {
-        try {
-            thisWholesaler = getByUsername();
-        } catch (SQLException ex) {
-            Logger.getLogger(WhServBean.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(WhServBean.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            Logger.getLogger(WhServBean.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            Logger.getLogger(WhServBean.class.getName()).log(Level.SEVERE, null, ex);
-        }
-   
-    }
     
     
     
@@ -58,6 +45,7 @@ public class WhServBean implements Serializable {
 
         WholesalerDaoImpl whdao = new WholesalerDaoImpl();
         Wholesaler n = whdao.getCurrentWh();
+        this.thisWholesaler = n;
         return n;
     }
 
