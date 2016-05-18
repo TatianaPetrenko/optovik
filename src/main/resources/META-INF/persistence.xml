@@ -16,6 +16,7 @@
     <class>prod.model.Region</class>
     <class>prod.model.ProductCat</class>
     <class>prod.model.ProductCategory</class>
+    <class>prod.model.Images</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/optovik"/>

@@ -3,25 +3,26 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
         <title>Facelet Title</title>
 
     </h:head>
     <h:body>
         <h:form>
-            <br/><p:inputText class="input-text" value="#{wholesaler.name}" placeholder="Отображаемое имя" autocomplete="on" /><br/>
-            <br/><p:inputText class="input-text" value="#{whol.email}" placeholder="E-mail"/><br/>
-            <br/> <p:inputText class="input-text" value="#{whol.site}" placeholder="Сайт"/><br/>
+            <br/><h:inputText class="input-text" value="#{whServBean.thisWholesaler.name}" a:placeholder="Отображаемое имя" /><br/>
+            <br/><h:inputText class="input-text" value="#{whServBean.thisWholesaler.email}" a:placeholder="E-mail"/><br/>
+            <br/> <h:inputText class="input-text" value="#{whServBean.thisWholesaler.site}" a:placeholder="Сайт"/><br/>
 
-            <p:autoComplete placeholder="Город" id="cities" value="#{whol.city}" completeMethod="#{classifServBean.completeCity}"
+            <p:autoComplete placeholder="Город" id="cities" value="#{whServBean.thisWholesaler.city}" completeMethod="#{classifServBean.completeCity}"
                             var="city" itemLabel="#{city.name}" itemValue="#{city}"  maxResults="10" inputStyle="input-text" forceSelection="true" groupBy="#{city.countryId.name}"/>
 
-            <p:autoComplete placeholder="Регион" id="regs" value="#{whol.region}" completeMethod="#{classifServBean.completeRegion}"
+            <p:autoComplete placeholder="Регион" id="regs" value="#{whServBean.thisWholesaler.region}" completeMethod="#{classifServBean.completeRegion}"
                             var="city" itemLabel="#{city.name}" itemValue="#{city}"  maxResults="10" inputStyle="input-text" forceSelection="true" groupBy="#{city.countryId.name}"/>
-
+<br/><br/>
             <h:outputText  value="Описание деятельности" /> <br/>
-            <p:editor  value="#{whol.actDescription}"/>
+            <p:editor  value="#{whServBean.thisWholesaler.actDescription}"/>
 
 
             <h:commandLink action="#{whServBean.updateWH()}" value="Обновить"/>

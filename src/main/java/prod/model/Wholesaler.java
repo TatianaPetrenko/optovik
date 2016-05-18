@@ -6,6 +6,7 @@
 package prod.model;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,9 +17,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -36,6 +39,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Wholesaler.findByActDescription", query = "SELECT w FROM Wholesaler w WHERE w.actDescription = :actDescription"),
     @NamedQuery(name = "Wholesaler.findByTradeMark", query = "SELECT w FROM Wholesaler w WHERE w.tradeMark = :tradeMark")})
 public class Wholesaler implements Serializable {
+
+    @OneToMany(mappedBy = "idWh")
+    private Collection<Images> imagesCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -171,6 +177,15 @@ public class Wholesaler implements Serializable {
     @Override
     public String toString() {
         return "prod.model.Wholesaler[ id=" + id + " ]";
+    }
+
+    @XmlTransient
+    public Collection<Images> getImagesCollection() {
+        return imagesCollection;
+    }
+
+    public void setImagesCollection(Collection<Images> imagesCollection) {
+        this.imagesCollection = imagesCollection;
     }
     
 }

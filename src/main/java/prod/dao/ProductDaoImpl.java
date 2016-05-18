@@ -27,7 +27,7 @@ public class ProductDaoImpl {
     Session session = HibernateUtil.getSession();
     
      public void newProd(PrServBean n) {
-        WholesalerDaoImpl whdao = new WholesalerDaoImpl();
+       
         Product vac = n.getProd();
        
         Transaction tx = session.beginTransaction();

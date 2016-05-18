@@ -17,7 +17,7 @@
         <mapping class="prod.model.City"/>
         <mapping class="prod.model.Country"/>
         <mapping class="prod.model.Region"/>
-                        
+        <mapping class="prod.model.Images"/>  
         <mapping class="prod.model.ProductCat"/>
         <mapping class="prod.model.ProductCategory"/>
     </session-factory>
