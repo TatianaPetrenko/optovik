@@ -168,12 +168,12 @@ body > #page {
 
 
 .ui-tabmenu-nav , .ui-tabmenu {
-    background-color: #666!important;
+    background-color: rgb(12, 33, 80)!important;
     background-image: none!important;
     border-radius: 0!important;
     border: none!important;
     margin-top: -2px;
-    margin-bottom: -2px!important;
+    margin-bottom: -0px!important;
 }
 
 .ui-tabmenuitem {
@@ -217,17 +217,17 @@ body > #page {
 
 
 #block-menu {
-
+width: 80%;
 
 }
 .blmenu-item {
 
-    height: 130px;
-    width: 130px;
+    height: 50px;
+    width: 140px;
     text-align: center;
     background-color: rgb(12, 33, 80);
-    display: block;
-    line-height: 130px;
+    display: inline-block;
+    line-height: 50px;
     color: whitesmoke!important;
     margin: 0;
     font-size: 1em;
@@ -235,6 +235,7 @@ body > #page {
     -moz-transition: all 1s ease-out 0.001s;
     -o-transition: all 1s ease-out 0.001s;
     transition: all 1s ease-out 0.001s;
+    text-transform: uppercase ;
 }
 
 .blmenu-item:hover {
@@ -243,7 +244,14 @@ body > #page {
 
 }
 
-#menu, #menu form {
-
+#menu {
+padding-left: 18%;
     width: 100%;
+     background-color: rgb(12, 33, 80);
+    background-image: none!important;
+}
+
+#menu form {
+    min-width: 64%; 
+    
 }

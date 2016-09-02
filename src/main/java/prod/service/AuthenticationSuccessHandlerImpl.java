@@ -44,14 +44,6 @@ public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHa
             ExternalContext ec = facesContext.getCurrentInstance().getExternalContext();
             ec.getSessionMap().put("wholesaler", n);
 
-            JsonParser js = new JsonParser();
-
-            try {
-                js.parseJson();
-            } catch (ParseException ex) {
-                Logger.getLogger(AuthenticationSuccessHandlerImpl.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
             response.sendRedirect("main/wholesaler/wholesaler.xhtml");
         }
     }

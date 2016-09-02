@@ -18,7 +18,12 @@
     <h:body>
         <div class="ui-grid ui-grid-responsive">
             <div id="page">
+                <div id="menu" class="ui-grid-row" >
+                    <ui:insert name="menu" >
 
+                    </ui:insert>
+                </div>
+                
                 <div class="ui-grid-row" id="header">
 
                     <ui:insert name="header" >
@@ -30,11 +35,7 @@
 
                 <div id="content" class="clearfix ">
 
-                    <div id="menu" class="ui-grid-row" >
-                        <ui:insert name="menu" >
 
-                        </ui:insert>
-                    </div>
 
                     <div  class="ui-grid-row">
 
