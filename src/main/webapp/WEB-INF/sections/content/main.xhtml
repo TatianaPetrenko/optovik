@@ -7,30 +7,86 @@
     <h:head>
         <title>Facelet Title</title>
 
-  
+
     </h:head>
     <h:body>
-        <table width="100%" > 
-            <tr valign="top">
-                <td width="160px"><ui:include src="news.xhtml" /></td>
-                <td align="center">
+        <p:commandButton value="Войти" type="button" onclick="PF('dlg1').show();" style="background: white;"/>
+        <div class="box">
+            <p:layout  style="min-width:500px; height: 210px">
+                <p:layoutUnit position="west" resizable="false" size="50%" style="  border-left-color: transparent; border-bottom-color: transparent; border-top-color: transparent; ">
+                    <h3 style="text-align: center">РАБОТА</h3>
 
-               
+                    <table style="margin: auto">
+                        <tr>
+                            <td>
+                                <h:link> <div class="blmenu-item" style="display: inline-block">
 
+                                        Оптовик
 
-
-                    <ui:include src="../menus/block-menu.xhtml" /></td>
-
-                <td width="160px" align="right">   <ui:include src="login.xhtml" /></td>
-
-            </tr>
-
-
-
-        </table> 
+                                    </div></h:link>
+                            </td>
+                            <td>
 
 
+                                <h:link> <div class="blmenu-item" style="display: inline-block">
 
+                                        Реализатор
+
+                                    </div></h:link>
+                            </td>
+                        </tr>
+
+                        <tr><td>
+                                <h:link> <div class="blmenu-item" >
+
+                                        Соискатель
+
+                                    </div></h:link>
+                            </td>
+                            <td>
+                                <h:link> <div class="blmenu-item" >
+
+                                        Дальнобойщик
+
+                                    </div></h:link>
+                            </td>
+                        </tr>
+
+                    </table>
+
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center" style="text-align: center;border-right-color: transparent; border-bottom-color: transparent; border-top-color: transparent; ">
+                    <h3 style="text-align: center">ОПТОВЫЕ ПЛОЩАДКИ</h3>
+                      <h:link> <div class="blmenu-item" style="display: inline-block; ">
+
+                                ТОВАРЫ
+
+                            </div></h:link>
+                   
+
+                        <h:link> <div class="blmenu-item" style="display: inline-block">
+
+                                ОПТОВИКИ
+
+                            </div></h:link> 
+
+                </p:layoutUnit>
+            </p:layout>
+        </div>
+        
+        
+        <br/>
+         <h3 style="text-align: center">ТРИ ПРИЧИНЫ ИСПОЛЬЗОВАТЬ SEZAM.ONLINE</h3>
+       <p:panelGrid columns="3" layout="grid">            
+           <p:column><div class="box">1</div></p:column>
+                      <p:column><div class="box">2</div></p:column>
+                                 <p:column><div class="box">3</div></p:column>
+
+ </p:panelGrid>
+        
+        
+        
     </h:body>
 </html>
 

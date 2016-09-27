@@ -39,13 +39,9 @@
 
                     <div  class="ui-grid-row">
 
-                        <div class="ui-grid-col-2 block-form" >
-                            <ui:insert name="left-content" >
+                      
 
-                            </ui:insert>
-                        </div>
-
-                        <div class="ui-grid-col-8" style="padding: 20px">
+                        <div class="ui-grid-col-12" style="padding: 20px">
                             <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
 
                             <p:dialog widgetVar="statusDialog"  draggable="false" closable="false" resizable="false" showHeader="false">
@@ -56,13 +52,6 @@
 
                                 </ui:insert></h:panelGroup>
                         </div>
-
-                        <div class="ui-grid-col-2 block-form">
-                            <ui:insert name="right-content" >
-
-                            </ui:insert>
-                        </div>
-
 
                     </div>
                 </div>
