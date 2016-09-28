@@ -7,86 +7,89 @@
     <h:head>
         <title>Facelet Title</title>
 
-
     </h:head>
     <h:body>
-        <p:commandButton value="Войти" type="button" onclick="PF('dlg1').show();" style="background: white;"/>
-        <div class="box">
-            <p:layout  style="min-width:500px; height: 210px">
-                <p:layoutUnit position="west" resizable="false" size="50%" style="  border-left-color: transparent; border-bottom-color: transparent; border-top-color: transparent; ">
-                    <h3 style="text-align: center">РАБОТА</h3>
-
-                    <table style="margin: auto">
-                        <tr>
-                            <td>
-                                <h:link> <div class="blmenu-item" style="display: inline-block">
-
-                                        Оптовик
-
-                                    </div></h:link>
-                            </td>
-                            <td>
-
-
-                                <h:link> <div class="blmenu-item" style="display: inline-block">
-
-                                        Реализатор
-
-                                    </div></h:link>
-                            </td>
-                        </tr>
-
-                        <tr><td>
-                                <h:link> <div class="blmenu-item" >
-
-                                        Соискатель
-
-                                    </div></h:link>
-                            </td>
-                            <td>
-                                <h:link> <div class="blmenu-item" >
-
-                                        Дальнобойщик
-
-                                    </div></h:link>
-                            </td>
-                        </tr>
-
-                    </table>
-
-                </p:layoutUnit>
-
-                <p:layoutUnit position="center" style="text-align: center;border-right-color: transparent; border-bottom-color: transparent; border-top-color: transparent; ">
-                    <h3 style="text-align: center">ОПТОВЫЕ ПЛОЩАДКИ</h3>
-                      <h:link> <div class="blmenu-item" style="display: inline-block; ">
-
-                                ТОВАРЫ
-
-                            </div></h:link>
-                   
-
-                        <h:link> <div class="blmenu-item" style="display: inline-block">
-
-                                ОПТОВИКИ
-
-                            </div></h:link> 
-
-                </p:layoutUnit>
-            </p:layout>
+        <div  style="margin-top: -100px; margin-bottom: 100px; text-align: center">
+            <p:commandButton value="Войти" type="button" onclick="PF('dlg2').show();" style="background: white;"/>
+            <h:form >
+                <h:commandButton value='Зарегистрироваться' action="#{pages.setPage('regs/menu-reg.xhtml')}"/></h:form>
         </div>
-        
-        
-        <br/>
-         <h3 style="text-align: center">ТРИ ПРИЧИНЫ ИСПОЛЬЗОВАТЬ SEZAM.ONLINE</h3>
-       <p:panelGrid columns="3" layout="grid">            
-           <p:column><div class="box">1</div></p:column>
-                      <p:column><div class="box">2</div></p:column>
-                                 <p:column><div class="box">3</div></p:column>
+        <p:dialog  widgetVar="dlg2" modal="true" height="200" width="400" draggable="false" resizable="false">
+            <ui:include src="login.xhtml" />
+        </p:dialog>   
+        <div class="box ui-grid-responsive">
 
- </p:panelGrid>
-        
-        
-        
+            <div class="ui-grid-col-6 ui-grid-responsive">
+                <h3 style="text-align: center" class="ui-grid-col-12">РАБОТА</h3>
+
+
+                <div class="ui-grid-col-6">
+                    <h:link> <div class="blmenu-item ">
+
+                            Оптовик
+
+                        </div></h:link>     <br/>
+                </div>
+                <div class="ui-grid-col-6">
+                    <h:link> <div class="blmenu-item" >
+
+                            Соискатель
+
+                        </div></h:link>
+                    <br/>
+                </div>
+                <div class="ui-grid-col-6">
+
+                    <h:link> <div class="blmenu-item" >
+
+                            Реализатор
+
+                        </div></h:link>     <br/>    </div>
+                <div class="ui-grid-col-6">
+
+                    <h:link> <div class="blmenu-item" >
+
+                            Дальнобойщик
+
+                        </div></h:link><br/>
+                </div>
+
+
+
+            </div>
+
+            <div class="ui-grid-col-6 ui-grid-responsive">
+                <h3 style="text-align: center">ОПТОВЫЕ ПЛОЩАДКИ</h3>
+                <div class="ui-grid-col-6">
+                    <h:link> <div class="blmenu-item" >
+
+                            ТОВАРЫ
+
+                        </div></h:link>
+                </div>
+                <div class="ui-grid-col-6">
+                    <h:link> <div class="blmenu-item">
+
+                            ОПТОВИКИ
+
+                        </div></h:link> 
+
+                </div>
+            </div>
+        </div>
+
+
+        <br/>
+        <h3 style="text-align: center">ТРИ ПРИЧИНЫ ИСПОЛЬЗОВАТЬ SEZAM.ONLINE</h3>
+        <p:panelGrid columns="3" layout="grid">            
+            <p:column><div class="box">1</div></p:column>
+            <p:column><div class="box">2</div></p:column>
+            <p:column><div class="box">3</div></p:column>
+
+        </p:panelGrid>
+
+
+
     </h:body>
 </html>
 

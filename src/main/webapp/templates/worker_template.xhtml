@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <h:outputStylesheet name="common-style.css" library="css" />
+        <h:outputStylesheet name="grid.css" library="css" />
+        <h:outputStylesheet name="easy-autocomplete.css" library="js" />
+        <h:outputScript name="jquery.easy-autocomplete.js" library="js"/>
+
+    </h:head>
+
+    <h:body>
+          <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+            <p:dialog widgetVar="statusDialog"  draggable="false" closable="false" resizable="false" showHeader="false">
+                                <p:graphicImage name="285.gif" library="images" />
+                            </p:dialog>
+        <div class="ui-grid ui-grid-responsive">
+            <div id="page">
+                <div id="menu" class="ui-grid-row" >
+                    <ui:insert name="menu" >
+
+                    </ui:insert>
+                </div>
+                
+                <div class="ui-grid-row" id="header">
+
+                    <ui:insert name="header" >
+
+                    </ui:insert>
+
+                </div>
+
+
+                <div id="content" class="clearfix ">
+
+                    <p:layout style="height: 980px;">
+                        <p:layoutUnit position="west" resizable="false" size="200" styleClass="left-menu">
+      <ui:insert name="left-menu" >
+</ui:insert>
+    </p:layoutUnit>
+ 
+    <p:layoutUnit position="center" styleClass="content-center" >
+        <ui:insert name="content" >
+
+                                </ui:insert>
+    </p:layoutUnit>
+</p:layout>
+
+                    <div  class="ui-grid-row">
+
+                      
+
+                        <div class="ui-grid-col-12" style="padding: 20px">
+                          
+
+                          
+                            <h:panelGroup id="main-content" layout="block" >                            
+                              </h:panelGroup>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+            <div id="footer" class="ui-grid-row">
+                <ui:insert name="footer" >
+
+                </ui:insert>
+            </div>
+
+
+
+        </div>
+    </h:body>
+</html>
